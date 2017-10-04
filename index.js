@@ -17,33 +17,45 @@ var InputField = {
       disabled: false
     };
   },
+
+  onClickListener: function(event){
+    console.log("Clsick@#E@ed"); 
+    console.log(event);    
+  },
+
+  onChangeListener: function(event){},
+
+  onFocusListener: function(event){
+    console.log(event);
+  },
+
   view: function(vnode) {
     return(
       <div className="inputField">
       <div>
-        <div className='first'><img src={wifi} className="icon" alt="wifi ssid" /></div>
+        <div className='first'><img src="./w.svg" className="icon" alt="wifi ssid" /></div>
         <input type="text"  name="ssid" id="ssid" 
           value={vnode.state.ssid} 
-          onChange={this.onChangeListener} 
+          onchange={this.onChangeListener} 
           placeholder="Enter Network SSID"
           className={`first ${vnode.state.slabelClass}`}
-          onFocus={this.onFocusListener}
+          onclick={this.onFocusListener}
           disabled={vnode.state.disabled}/>
       </div>
       <div>
-        <div className='second'><img src={shield} className="icon" alt="wifi password" /></div>
+        <div className='second'><img src="./s.svg" className="icon" alt="wifi password" /></div>
         <input type="password" name="password" id="password" 
           value={vnode.state.password} 
-          onChange={this.onChangeListener} 
+          onchange={this.onChangeListener} 
           placeholder="Enter Wifi Password"
           className={`second ${vnode.state.plabelClass}`}
-          onFocus={this.onFocusListener}
+          onfocus={this.onFocusListener}
           disabled={vnode.state.disabled}/>
       </div>
       <input type="button" 
           className={vnode.state.buttonClass}
           value={vnode.state.buttonLabel} 
-          onClick={vnode.state.onClickListener}
+          onclick={this.onClickListener}
           disabled={vnode.state.disabled}/>
       </div>
     );
